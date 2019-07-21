@@ -1,0 +1,25 @@
+version: '2'
+
+services:
+  drone-server:
+    image: drone/drone:1
+    ports:
+      - 8081:80
+    volumes:
+      - /var/lib/drone:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: always
+    environment:
+      - DRONE_GIT_ALWAYS_AUTH=false
+      - DRONE_SERVER_HOST=3.85.213.22
+      - DRONE_SERVER_PROTO=https
+      - DRONE_TLS_AUTOCERT=false
+      - DRONE_RUNNER_CAPACITY=2
+      # GitLab Config
+      - DRONE_GITLAB_URL=https://gitlab.com
+      - DRONE_GITLAB_CLIENT_ID=
+      - DRONE_GITLAB_CLIENT_SECRET=
+      - DRONE_LOGS_PRETTY=true
+      - DRONE_LOGS_COLOR=true
+
+      
